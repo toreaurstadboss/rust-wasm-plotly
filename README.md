@@ -1,10 +1,10 @@
 ﻿# StackBlitz ready Plotly 2D scatter demo
 
-This project now supports two flows. The Vite app renders a 2D Plotly scatter chart with a shuffle interaction, and Rust also has a native `main.rs` that generates a standalone HTML preview. Vite handles the local dev server and module loading, while Rust generates the plot specification that the browser loader passes to Plotly.
+This project is set up to run in StackBlitz from [this GitHub import link](https://stackblitz.com/~/github.com/toreaurstadboss/rust-wasm-plotly). The browser app is the primary entry point: Vite serves the page, Rust generates the scatter plot spec, and the JavaScript loader only initializes wasm and hands the JSON to Plotly.
 
-You can run the app directly in StackBlitz from [this GitHub import link](https://stackblitz.com/~/github.com/toreaurstadboss/rust-wasm-plotly). StackBlitz uses the same Vite entry point, so the chart and shuffle behavior match the local setup.
+If you want the local Rust preview, run `cargo run` from the `rust/` folder. That path is optional and local-only: it generates a standalone `2dscatter.html` on disk and is not used by StackBlitz.
 
-The repository still includes the Rust/WASM source tree and generated `pkg/` output, and the browser demo keeps almost all plot logic in Rust. The JavaScript entry point is a thin loader that initializes wasm and renders the JSON spec. If you want the native Rust flow, run `cargo run` from the `rust/` folder and it will generate `2dscatter.html` in the workspace root.
+The browser demo keeps almost all plot logic in Rust. The `src/main.js` file is a thin loader, and the checked-in `pkg/` output lets StackBlitz start without rebuilding wasm first.
 
 ## Run locally
 
@@ -32,11 +32,9 @@ npm run build:wasm
 
 ## Native Rust preview
 
-If you want the plain Rust entry point instead of the Vite app, run:
-
 ```bash
 cd rust
 cargo run
 ```
 
-That writes `2dscatter.html` at the workspace root and opens it on Windows.
+That writes `2dscatter.html` at the workspace root and opens it on Windows. Use this only for local previewing; StackBlitz uses the Vite app in the repository root.
