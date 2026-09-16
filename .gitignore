@@ -2,3 +2,5 @@
 
 /target
 /rust/target
+
+/node_modules
