@@ -1,0 +1,7 @@
+{
+  "rust-analyzer.linkedProjects": ["${workspaceFolder}/rust/Cargo.toml"],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/rust/target": true
+  }
+}
