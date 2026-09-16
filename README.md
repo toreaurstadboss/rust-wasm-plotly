@@ -1,6 +1,14 @@
-﻿# Rust + WASM + Plotly
+﻿# StackBlitz ready starter solution with Rust + WASM + Plotly
 
-This is a small Vite app that renders a Plotly surface chart and calls a Rust-exported `greet()` function.
+This project is a small Vite app that renders a Plotly surface chart and calls a Rust-exported `greet()` function from WebAssembly. Vite handles the local dev server and module loading, while the Rust build tooling compiles the wasm package into the checked-in `pkg/` folder so the app can start without a separate rebuild step.
+
+You can run the app directly in StackBlitz from [this GitHub import link](https://stackblitz.com/~/github.com/toreaurstadboss/rust-wasm-plotly). StackBlitz uses the same Vite entry point, so the app behavior matches the local setup as long as the generated wasm files in `pkg/` are present.
+
+The repo includes the following pieces for the wasm workflow:
+
+- `npm run build:wasm` to regenerate the WebAssembly output from the Rust crate.
+- Prebuilt wasm artifacts in the `pkg/` folder for quick startup in StackBlitz and local development.
+- A Vite-based frontend that imports `pkg/rust_wasm.js` and loads the wasm module at runtime.
 
 ## Run locally
 
