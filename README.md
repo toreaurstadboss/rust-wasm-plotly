@@ -1,14 +1,10 @@
-﻿# StackBlitz ready starter solution with Rust + WASM + Plotly
+﻿# StackBlitz ready Plotly 2D scatter demo
 
-This project is a small Vite app that renders a Plotly surface chart and calls a Rust-exported `greet()` function from WebAssembly. Vite handles the local dev server and module loading, while the Rust build tooling compiles the wasm package into the checked-in `pkg/` folder so the app can start without a separate rebuild step.
+This project now supports two flows. The Vite app renders a 2D Plotly scatter chart with a shuffle interaction, and Rust also has a native `main.rs` that generates a standalone HTML preview. Vite handles the local dev server and module loading, while Rust generates the plot specification that the browser loader passes to Plotly.
 
-You can run the app directly in StackBlitz from [this GitHub import link](https://stackblitz.com/~/github.com/toreaurstadboss/rust-wasm-plotly). StackBlitz uses the same Vite entry point, so the app behavior matches the local setup as long as the generated wasm files in `pkg/` are present.
+You can run the app directly in StackBlitz from [this GitHub import link](https://stackblitz.com/~/github.com/toreaurstadboss/rust-wasm-plotly). StackBlitz uses the same Vite entry point, so the chart and shuffle behavior match the local setup.
 
-The repo includes the following pieces for the wasm workflow:
-
-- `npm run build:wasm` to regenerate the WebAssembly output from the Rust crate.
-- Prebuilt wasm artifacts in the `pkg/` folder for quick startup in StackBlitz and local development.
-- A Vite-based frontend that imports `pkg/rust_wasm.js` and loads the wasm module at runtime.
+The repository still includes the Rust/WASM source tree and generated `pkg/` output, and the browser demo keeps almost all plot logic in Rust. The JavaScript entry point is a thin loader that initializes wasm and renders the JSON spec. If you want the native Rust flow, run `cargo run` from the `rust/` folder and it will generate `2dscatter.html` in the workspace root.
 
 ## Run locally
 
@@ -18,28 +14,29 @@ The repo includes the following pieces for the wasm workflow:
 npm install
 ```
 
-2. Precompile the Rust/WASM package into `pkg/`.
-
-```bash
-npm run build:wasm
-```
-
-3. Start the development server.
+2. Start the development server.
 
 ```bash
 npm run dev
 ```
 
-4. Open the URL shown by Vite, usually `http://localhost:5173`.
+3. Open the URL shown by Vite, usually `http://localhost:5173`.
 
 ## Optional wasm rebuild
 
-If you want to regenerate the Rust/WASM output instead of using the checked-in StackBlitz shim, run:
+If you want to regenerate the Rust/WASM output in `pkg/`, run:
 
 ```bash
 npm run build:wasm
 ```
 
-## StackBlitz
+## Native Rust preview
 
-The app can run in StackBlitz with `npm run dev` because the generated wasm module is shimmed in `pkg/rust_wasm.js`. For a local setup, run `npm run build:wasm` first so the `pkg/` output is regenerated before Vite starts.
+If you want the plain Rust entry point instead of the Vite app, run:
+
+```bash
+cd rust
+cargo run
+```
+
+That writes `2dscatter.html` at the workspace root and opens it on Windows.

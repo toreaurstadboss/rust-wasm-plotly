@@ -1,5 +1,8 @@
 
 
+/node_modules
+/dist
+/2dscatter.html
 /target
 /rust/target
 
