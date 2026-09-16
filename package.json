@@ -2,7 +2,7 @@
   "name": "rust-wasm-plotly",
   "version": "0.1.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "node ./node_modules/vite/bin/vite.js",
     "build:wasm": "wasm-pack build rust --target web --out-dir pkg"
   },
   "devDependencies": {
