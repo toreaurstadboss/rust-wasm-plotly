@@ -1,4 +1,4 @@
-# Rust + WASM + Plotly
+﻿# Rust + WASM + Plotly
 
 This is a small Vite app that renders a Plotly surface chart and calls a Rust-exported `greet()` function.
 
@@ -10,13 +10,19 @@ This is a small Vite app that renders a Plotly surface chart and calls a Rust-ex
 npm install
 ```
 
-2. Start the development server.
+2. Precompile the Rust/WASM package into `pkg/`.
+
+```bash
+npm run build:wasm
+```
+
+3. Start the development server.
 
 ```bash
 npm run dev
 ```
 
-3. Open the URL shown by Vite, usually `http://localhost:5173`.
+4. Open the URL shown by Vite, usually `http://localhost:5173`.
 
 ## Optional wasm rebuild
 
@@ -28,4 +34,4 @@ npm run build:wasm
 
 ## StackBlitz
 
-The app can run in StackBlitz with `npm run dev` because the generated wasm module is shimmed in `pkg/rust_wasm.js` until the Rust build is regenerated locally.
+The app can run in StackBlitz with `npm run dev` because the generated wasm module is shimmed in `pkg/rust_wasm.js`. For a local setup, run `npm run build:wasm` first so the `pkg/` output is regenerated before Vite starts.
