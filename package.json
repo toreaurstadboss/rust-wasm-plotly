@@ -6,6 +6,7 @@
     "build:wasm": "wasm-pack build rust --target web --out-dir pkg"
   },
   "devDependencies": {
+    "plotly.js-dist-min": "^2.35.3",
     "vite": "^5.0.0"
   }
 }

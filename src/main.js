@@ -1,3 +1,4 @@
+import Plotly from "plotly.js-dist-min";
 import init, { greet } from "../pkg/rust_wasm.js";
 
 init().then(() => {
