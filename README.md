@@ -38,3 +38,10 @@ cargo run
 ```
 
 That writes `2dscatter.html` at the workspace root and opens it on Windows. Use this only for local previewing; StackBlitz uses the Vite app in the repository root.
+
+
+## Screenshots
+
+![Plotly 2D scatter demo in StackBlitz](plotly_Stackexchange.png)
+![Plotly ogo](plotly.png)
+![2d plot running in LocalDEV](2dscatterplot.png)
