@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS= vite --host 0.0.0.0 --port 5173",
-    "build:wasm": "wasm-pack build rust --target web --out-dir pkg"
+    "build:wasm": "cd rust && wasm-pack build --target web --out-dir ../pkg"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
